@@ -34,7 +34,7 @@ cp -a $SOURCE_DIR. $PROTO_DIR
 cp -a $PROTO_REF_DIR $PROTO_DIR/$PROTO_REF_DIR
 # Move into the proto directory and use the stripper to remove the 
 # excess proto file features that do not work in GO.
-cd proto && protoc --stripper_out=. --stripper_opt=paths=source_relative **/*.proto
+cd proto && protoc --stripper_out=. --stripper_opt=paths=source_relative */**/*.proto
 
 # The google proto references are not copied over, so we need to refresh them.
 rm -rf $PROTO_REF_DIR
