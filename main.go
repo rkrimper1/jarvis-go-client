@@ -125,10 +125,11 @@ func (c *Client) grpcConnLocalAuthCredentials() {
 	sClient := securitypb.NewSecurityServiceClient(c.conn)
 	authReq := &securitypb.AuthenticateRequest{
 		Meta: &commonpb.RequestMeta{
-			RequestId: "auth-001",
+			RequestId: "sec-auth-001",
 		},
 		SubjectId: "tony-stark",
-		Method: securitypb.AuthMethod_AUTH_METHOD_TOKEN,
+		Method: securitypb.AuthMethod_AUTH_METHOD_PASSCODE,
+		CredentialPayload: []byte("tony-stark"),
 	}
 
 	ctx, cancel := context.WithTimeout(c.ctx, c.timeout)
